@@ -3,13 +3,19 @@ function resaltar(id, color) {
     document.getElementById(id).style.color = color;
 }
 function clickear(id) {
+    var col1 = 'green';
+    var col2 = 'blue';
     if (selected ==0) {
         selected = id;
     } else {
         document.getElementById(selected).style.background = 'white';
         selected = id;
     }
-    document.getElementById(id).style.background = 'green';
+    if (document.getElementById('player').value == 0) {
+        document.getElementById(id).style.background = col1;
+    } else {
+        document.getElementById(id).style.background = col2;
+    }
     document.getElementById('value').value = id;
 }
 

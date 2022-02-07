@@ -72,7 +72,7 @@
                         $win1++;
                     }
                     if ($win1 >= 3) {
-                        echo '<h1>PlAYER ONE WIN</h1>';
+                        echo '<h1>PLAYER ONE WIN</h1>';
                     }
                 }
                 foreach ($_SESSION['jugador'][1] as $i) {
@@ -80,7 +80,7 @@
                         $win2++;
                     }
                     if ($win2 >= 3) {
-                        echo '<h1>PlAYER TWO WIN</h1>';
+                        echo '<h1>PLAYER TWO WIN</h1>';
                     }
                 }
             }
@@ -92,7 +92,6 @@
         $_SESSION['jugador'][1] = array();
     }
     
-
 
 
 ?>
@@ -118,7 +117,7 @@
     <div class="buttons">
         <form action="index.php" method="GET">
             <input type="Submit" id="send" value="SELECCIONAR">
-            <input type="hidden" name="player" value="<?php echo $player;?>">
+            <input type="hidden" id="player" name="player" value="<?php echo $player;?>">
             <input type="hidden" id='value' name="value" value='1'>
         </form>
         <table>
