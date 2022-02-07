@@ -1,4 +1,4 @@
-#TA-TE-TI
+# TA-TE-TI
 
 ## ¿Qué es?
 Esto es una tarea para un curso de PHP en [ElTaller](https://www.eltaller.edu.uy/).
