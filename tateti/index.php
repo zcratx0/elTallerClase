@@ -80,7 +80,7 @@
                         $win2++;
                     }
                     if ($win2 >= 3) {
-                        echo '<h1>PlAYER ONE WIN</h1>';
+                        echo '<h1>PlAYER TWO WIN</h1>';
                     }
                 }
             }
