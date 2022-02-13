@@ -5,6 +5,7 @@
     $player = 0;
     // The game is end?
     $win = FALSE; 
+    //  Posibilidades de ganar
     $winCondition = array(
         //  Verticales
         array('1', '2', '3'),
@@ -39,6 +40,7 @@
         if (isset($_GET['value'])&& isset($_GET['player'])) {    
             //Revisar a que jugador va la información
             switch($_GET['player']) {
+                //  Jugador uno
                 case 0:
                     //  Actualizar la sesion
                     if (in_array($_GET['value'], $_SESSION['jugador'][0])) {
@@ -49,6 +51,7 @@
                         $player = 1;
                     }
                     break;
+                //  Jugador dos
                 case 1:
                     if (in_array($_GET['value'], $_SESSION['jugador'][1])) {
 
@@ -59,6 +62,7 @@
                     }
                     break;
             }
+            //  Comprobar si alguien gana
             foreach($winCondition as $d) {
                 $win1 = 0;
                 $win2 = 0;
@@ -81,6 +85,7 @@
                     }
                 }
             }
+            //  Comprobar si es empate, solo si nadie gano
             if (count($_SESSION['jugador'][0]) + count($_SESSION['jugador'][1]) >= 9 && !$win) {
                 echo '<h1>DRAW</h1>';
                 $win = TRUE;
@@ -89,6 +94,7 @@
         
 
     } else {
+        //  Crear las sesiones
         $_SESSION['jugador'][0] = array();
         $_SESSION['jugador'][1] = array();
     }
@@ -119,7 +125,7 @@
         <form action="index.php" method="GET">
             <input type="Submit" id="send" value="SELECCIONAR">
             <input type="hidden" id="player" name="player" value="<?php echo $player;?>">
-            <input type="hidden" id='value' name="value" value='1'>
+            <input type="hidden" id='value' name="value" value=''>
         </form>
         <table>
         <tbody id="tablero">
@@ -134,8 +140,12 @@
 </body>
 </html>
 <script>
+    //  Quitar el boton de enviar al inicio
+    document.getElementById('send').disabled = true;
+    //  Generar tablas
     generateTable();
     <?php
+    //  Actualiza la tabla de valores
     foreach ($_SESSION['jugador'][0] as $i) {
         echo 'updateTable("celda';
         echo $i;
