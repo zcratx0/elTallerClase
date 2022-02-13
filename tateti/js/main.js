@@ -43,3 +43,9 @@ function updateTable(id, value) {
     }
     
 }
+
+function winEndGame() {
+    document.getElementById('send').disabled = true;
+    document.getElementById('send').hidden = true;
+    
+}

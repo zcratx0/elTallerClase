@@ -3,6 +3,8 @@
     @session_start();
     //Variables
     $player = 0;
+    // The game is end?
+    $win = FALSE; 
     $winCondition = array(
         //  Verticales
         array('1', '2', '3'),
@@ -20,15 +22,8 @@
     //Reset Session
     function resetSession() {
         unset($_SESSION['jugador']);
+        $win = FALSE;
     }
-    //Quitar los botones ya presionados
-    function updateValues() {
-        foreach ($jugadorUno as $i) {              
-                
-        }
-    }
-    //Desactivar todas los botones
-
 
     //Revisar si debe resetear
     if (isset($_GET['reset'])) {
@@ -73,6 +68,7 @@
                     }
                     if ($win1 >= 3) {
                         echo '<h1>PLAYER ONE WIN</h1>';
+                        $win = TRUE;
                     }
                 }
                 foreach ($_SESSION['jugador'][1] as $i) {
@@ -81,8 +77,13 @@
                     }
                     if ($win2 >= 3) {
                         echo '<h1>PLAYER TWO WIN</h1>';
+                        $win = TRUE;
                     }
                 }
+            }
+            if (count($_SESSION['jugador'][0]) + count($_SESSION['jugador'][1]) >= 9 && !$win) {
+                echo '<h1>DRAW</h1>';
+                $win = TRUE;
             }
         }
         
@@ -144,6 +145,10 @@
         echo 'updateTable("celda';
         echo $i;
         echo '", "O");';
+    }
+    //  Detecta si el juego termino
+    if ($win == TRUE) {
+        echo 'winEndGame();';
     }
     ?>
 
